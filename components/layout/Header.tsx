@@ -5,6 +5,8 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import HorizontalAd from '../ads/horizontal-ad'
+
 
 export default function Header() {
   const pathname = usePathname()
@@ -14,6 +16,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+
       <div className="max-w-7xl mx-auto px-4 md:px-10 lg:px-10">
         <div className="flex items-center justify-between h-16 md:h-16">
           {/* Logo */}
@@ -26,35 +29,31 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link 
-              href="/" 
-              className={`text-sm font-medium transition ${
-                isActive('/') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
-              }`}
+            <Link
+              href="/"
+              className={`text-sm font-medium transition ${isActive('/') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
+                }`}
             >
               Home
             </Link>
-            <Link 
-              href="/gallery" 
-              className={`text-sm font-medium transition ${
-                isActive('/gallery') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
-              }`}
+            <Link
+              href="/gallery"
+              className={`text-sm font-medium transition ${isActive('/gallery') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
+                }`}
             >
               Gallery
             </Link>
-            <Link 
-              href="/trending" 
-              className={`text-sm font-medium transition ${
-                isActive('/trending') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
-              }`}
+            <Link
+              href="/trending"
+              className={`text-sm font-medium transition ${isActive('/trending') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
+                }`}
             >
               Trending
             </Link>
-            <Link 
-              href="/favorites" 
-              className={`text-sm font-medium transition ${
-                isActive('/favorites') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
-              }`}
+            <Link
+              href="/favorites"
+              className={`text-sm font-medium transition ${isActive('/favorites') ? 'text-orange-primary' : 'text-gray-700 hover:text-orange-primary'
+                }`}
             >
               Favorites
             </Link>
@@ -62,8 +61,8 @@ export default function Header() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            <Link 
-              href="/signin" 
+            <Link
+              href="/signin"
               className="hidden md:block text-sm font-medium text-gray-700 hover:text-orange-primary transition"
             >
               Sign In
@@ -73,7 +72,7 @@ export default function Header() {
                 Sign Up
               </Button>
             </Link>
-            
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -88,45 +87,41 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100">
             <nav className="flex flex-col gap-4">
-              <Link 
-                href="/" 
-                className={`text-sm font-medium px-2 py-1 ${
-                  isActive('/') ? 'text-orange-primary' : 'text-gray-700'
-                }`}
+              <Link
+                href="/"
+                className={`text-sm font-medium px-2 py-1 ${isActive('/') ? 'text-orange-primary' : 'text-gray-700'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
-              <Link 
-                href="/gallery" 
-                className={`text-sm font-medium px-2 py-1 ${
-                  isActive('/gallery') ? 'text-orange-primary' : 'text-gray-700'
-                }`}
+              <Link
+                href="/gallery"
+                className={`text-sm font-medium px-2 py-1 ${isActive('/gallery') ? 'text-orange-primary' : 'text-gray-700'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Gallery
               </Link>
-              <Link 
-                href="/trending" 
-                className={`text-sm font-medium px-2 py-1 ${
-                  isActive('/trending') ? 'text-orange-primary' : 'text-gray-700'
-                }`}
+              <Link
+                href="/trending"
+                className={`text-sm font-medium px-2 py-1 ${isActive('/trending') ? 'text-orange-primary' : 'text-gray-700'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Trending
               </Link>
-              <Link 
-                href="/favorites" 
-                className={`text-sm font-medium px-2 py-1 ${
-                  isActive('/favorites') ? 'text-orange-primary' : 'text-gray-700'
-                }`}
+              <Link
+                href="/favorites"
+                className={`text-sm font-medium px-2 py-1 ${isActive('/favorites') ? 'text-orange-primary' : 'text-gray-700'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Favorites
               </Link>
               <div className="pt-4 border-t border-gray-100 flex flex-col gap-2">
-                <Link 
-                  href="/signin" 
+                <Link
+                  href="/signin"
                   className="text-sm font-medium text-gray-700 px-2 py-1"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -142,6 +137,7 @@ export default function Header() {
           </div>
         )}
       </div>
+
     </header>
   )
 }
