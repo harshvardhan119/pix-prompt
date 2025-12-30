@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id            String  @id
+  name          String
+  slug          String  @unique
+  description   String?
+  icon          String?
+  gradientStart String  @default("#FF7A59")
+  gradientEnd   String  @default("#FF6A40")
+  promptCount   Int     @default(0)
+
+  @@index([slug])
+}
+
+model collection_prompts {
+  id           String      @id
+  collectionId String
+  promptId     String
+  addedAt      DateTime    @default(now())
+  collections  collections @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  prompts      prompts     @relation(fields: [promptId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, promptId])
+  @@index([collectionId])
+  @@index([promptId])
+}
+
+model collections {
+  id                 String               @id
+  userId             String
+  name               String
+  description        String?
+  isPublic           Boolean              @default(false)
+  promptCount        Int                  @default(0)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime
+  collection_prompts collection_prompts[]
+  users              users                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model favorites {
+  id        String   @id
+  userId    String
+  promptId  String
+  createdAt DateTime @default(now())
+  prompts   prompts  @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  users     users    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, promptId])
+  @@index([promptId])
+  @@index([userId])
+}
+
+model prompts {
+  id                 String               @id
+  title              String
+  prompt             String
+  description        String?
+  imageUrl           String?
+  category           String
+  generator          String
+  complexity         String
+  views              Int                  @default(0)
+  rating             Float                @default(0)
+  ratingCount        Int                  @default(0)
+  slug               String               @unique
+  tags               String[]
+  isFeatured         Boolean              @default(false)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime
+  collection_prompts collection_prompts[]
+  favorites          favorites[]
+
+  @@index([category])
+  @@index([createdAt])
+  @@index([generator])
+  @@index([isFeatured])
+  @@index([slug])
+}
+
+model users {
+  id          String        @id
+  email       String        @unique
+  name        String?
+  password    String
+  image       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime
+  collections collections[]
+  favorites   favorites[]
+}

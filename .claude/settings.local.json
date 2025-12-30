@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if exist \"lib\\supabase\" rmdir /s /q \"lib\\supabase\")",
+      "Bash(npm install)",
+      "Bash(curl:*)",
+      "Bash(npm install:*)",
+      "Bash(find:*)",
+      "Bash(npx prisma db push:*)",
+      "Bash(npm run db:seed:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(ls:*)",
+      "Bash(dir \"C:\\\\Users\\\\chitr\\\\Desktop\\\\pdf\\\\app\" /B)",
+      "Bash(dir:*)",
+      "Bash(node -e:*)",
+      "Bash(node analyze-data.js:*)",
+      "Bash(node import-data.js:*)",
+      "Bash(npx prisma generate:*)",
+      "Bash(timeout /t 3 /nobreak)",
+      "Bash(node test-prisma.js:*)",
+      "Bash(node verify-import.js:*)",
+      "Bash(del analyze-data.js test-prisma.js verify-import.js)",
+      "Bash(node add-generator-prompts.js:*)",
+      "Bash(node update-images.js:*)",
+      "Bash(node check-images.js:*)"
+    ]
+  }
+}

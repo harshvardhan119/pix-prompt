@@ -1,0 +1,14 @@
+{
+  "name": "PixPrompt AI",
+  "short_name": "PixPrompt",
+  "description": "Browse 10K+ tested AI prompts. Copy instantly. No account needed.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF7A59",
+  "orientation": "portrait-primary",
+  "icons": [],
+  "categories": ["productivity", "utilities", "design"],
+  "screenshots": []
+}
+
